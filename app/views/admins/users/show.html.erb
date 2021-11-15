@@ -1,0 +1,24 @@
+<h1>会員詳細</h1>
+<table>
+  <tr>
+    <th>会員ID</th>
+    <td><%= @user.id %></td>
+  </tr>
+  <tr>
+    <th>会員氏名</th>
+    <td><%= @user.lastname + @user.firstname %></td>
+  </tr>
+  <tr>
+    <th>会員氏名カナ</th>
+    <td><%= @user.lastname_kana + @user.firstname_kana %></td>
+  </tr>
+  <tr>
+    <th>会員メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th>退会フラグ</th>
+    <td><%= @user.is_delete %></td>
+  </tr>
+  <%= link_to '会員一覧に戻る', admin_users_path %>
+</table>
