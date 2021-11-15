@@ -1,0 +1,10 @@
+<h1>商品詳細</h1>
+<table>
+  <tr>
+    <td><%= @item.name %></td>
+    <td><%= @item.item_spec %></td>
+    <td><%= @item.price %></td>
+    <td><%= @item.genre %></td>
+  </tr>
+  <%= link_to '編集する', edit_admin_item_path(@item.id) %>
+</table>

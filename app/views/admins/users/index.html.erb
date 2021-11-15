@@ -1,0 +1,18 @@
+<h1>会員一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>会員氏名</th>
+      <th>会員メールアドレス</th>
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+  <tbody>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.lastname + @user.firstname %></td>
+      <td><%= user.email %></td>
+    </tr>
+  </tbody>
+</table>
