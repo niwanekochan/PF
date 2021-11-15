@@ -1,5 +1,5 @@
 <h1>商品一覧</h1>
-<%= link_to '新規追加', new_admin_item_path %>
+<%= link_to '新規追加', new_admins_item_path %>
 <table>
   <thead>
     <tr>
@@ -11,7 +11,7 @@
   <tbody>
     <% @items.each do |item| %>
     <tr>
-      <td><%= attachment_image_tag item, :image, :fill, 60, 60, fallback: "" %></td>
+      <td><%= attachment_image_tag item, :image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
       <td><%= item.name %></td>
       <td><%= item.price %></td>
     </tr>
