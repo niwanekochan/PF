@@ -4,17 +4,17 @@
     <tr>
       <th>商品画像</th>
       <th>商品名</th>
-      <th>スペック</th>
       <th>価格帯</th>
+      <th>スペック</th>
     </tr>
   </thead>
   <% @items.each do |item| %>
   <tbody>
     <tr>
       <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= item.pc_spec %></td>
     </tr>
   </tbody>
   <% end %>

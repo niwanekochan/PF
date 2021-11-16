@@ -1,0 +1,27 @@
+<h1>商品詳細</h1>
+<table>
+  <tr>
+    <td>製品画像：</td>
+  </tr>
+  <tr>
+    <td>製品名：<%= @item.name %></td>
+  </tr>
+  <tr>
+    <td>価格帯：<%= @item.price %></td>
+  </tr>
+  <tr>
+    <td>製品スペック：<%= @item.pc_spec %></td>
+  </tr>
+</table>
+<% @item.comments.each do |item_comment| %>
+<table>
+  <tr>
+    <td><%= item_comment.user.name %></td>
+    <td><%= item_comment.comment %></td>
+  </tr>
+</table>
+<% end %>
+<%= form_with (model:[@item_comment, @item] url:end_users_item_comments_path, local: true) do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit 'コメントする' %>
+<% end %>
