@@ -4,7 +4,7 @@
     <td><%= @item.name %></td>
     <td><%= @item.item_spec %></td>
     <td><%= @item.price %></td>
-    <td><%= @item.genre %></td>
+    <td><%= @item.genre.name %></td>
   </tr>
-  <%= link_to '編集する', edit_admins_item_path(@item.id) %>
 </table>
+<%= link_to '編集する', edit_admins_item_path(@item.id) %>
