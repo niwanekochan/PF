@@ -2,7 +2,7 @@
 <table>
   <tr>
     <th>名前</th>
-    <td><%= @user.last_name + @user.first_name %></td>
+    <td><%= @user.last_name + @user.fitst_name %></td>
   </tr>
   <tr>
     <th>メールアドレス</th>
@@ -12,5 +12,5 @@
     <th>登録パスワード</th>
     <td><%= @user.password %></td>
   </tr>
-  <%= link_to '登録内容を変更', edit_end_user_userpath(@user.id) %>
 </table>
+<%= link_to '登録内容を変更', edit_end_users_user_path(@user.id) %>

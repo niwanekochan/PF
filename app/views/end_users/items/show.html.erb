@@ -2,9 +2,9 @@
 <div>
   製品画像：
   <% if @item.favorited_by?(current_user) %>
-    <%= link_to 'お気に入りリスト追加済み', end_users_item_favorite_path(@item_id), method: :delete %>
+    <%= link_to 'お気に入りリスト追加済み', end_users_item_favorite_path(@item.id), method: :delete %>
   <% else %>
-    <%= link_to 'お気に入りリストに追加', end_users_item_favorites_path(@item_id), method: :post %>
+    <%= link_to 'お気に入りリストに追加', end_users_item_favorites_path(@item.id), method: :post %>
   <% end %>
 </div>
 <table>
@@ -15,18 +15,18 @@
     <td>価格帯：<%= @item.price %></td>
   </tr>
   <tr>
-    <td>製品スペック：<%= @item.pc_spec %></td>
+    <td>製品スペック：<%= @item.item_spec %></td>
   </tr>
 </table>
 <% @item.comments.each do |item_comment| %>
 <table>
   <tr>
-    <td><%= item_comment.user.name %></td>
+    <td><%#= item_comment.user.name %></td>
     <td><%= item_comment.comment %></td>
   </tr>
 </table>
 <% end %>
-<%= form_with (model:[@item_comment, @item] url:end_users_item_comments_path, local: true) do |f| %>
+<%= form_with(model:[@item, @item_comment], url:end_users_item_comments_path(@item.id), local: true) do |f| %>
   <%= f.text_area :comment %>
   <%= f.submit 'コメントする' %>
 <% end %>
