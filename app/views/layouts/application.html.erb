@@ -11,15 +11,21 @@
 
   <body>
     <header>
+      <div>
+        <%= form_with url: end_users_search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit '検索' %>
+        <% end %>
+      </div>
       <% if user_signed_in? %>
         <li>
-          <%= link_to 'マイページ', end_users_user_path %>
+          <%#= link_to 'マイページ', end_users_user_path %>
         </li>
         <li>
           <%= link_to '製品一覧', end_users_items_path %>
         </li>
         <li>
-          <%= link_to 'お気に入りリスト', end_users_item_favorites %>
+          <%#= link_to 'お気に入りリスト', end_users_item_favorites_path %>
         </li>
         <li>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>

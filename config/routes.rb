@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'users/confirm', to: 'users#confirm'
     resources :users, only: [:show, :edit, :update]
+    get 'search', to: 'items#search'
     resources :items, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
       resources :favorites, only: [:create, :destroy, :index]
