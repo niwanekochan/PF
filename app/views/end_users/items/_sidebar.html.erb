@@ -1,0 +1,15 @@
+<h1>ジャンル検索</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ジャンル一覧</th>
+    </tr>
+  </thead>
+  <% genres.each do |genre| %>
+  <tbody>
+    <tr>
+      <td><%= link_to genre.name, end_users_search_path('search[keyword]', genre.id) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
