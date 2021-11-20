@@ -19,6 +19,12 @@
     <td>製品スペック：<%= @item.item_spec %></td>
   </tr>
 </table>
+<% @all_ranks.each.with_index(1) do |item, i| %>
+  第
+  = i
+  位
+  <%= item.name %>
+<% end %>
 <% @item.comments.each do |item_comment| %>
 <table>
   <tr>
