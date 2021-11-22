@@ -13,8 +13,12 @@
   <tbody>
     <tr>
       <td></td>
-      <td><%= item.name %></td>
-      <td><%= item.price %></td>
+      <td>
+        <%= link_to end_users_item_path do %>
+          <%= item.name %>
+        <% end %>
+      </td>
+      <td><%= item.price %>～</td>
       <td><%= item.item_spec %></td>
     </tr>
   </tbody>
