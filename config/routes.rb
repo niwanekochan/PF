@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     get 'search', to: 'items#search'
     resources :items, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
-      resources :favorites, only: [:create, :destroy, :index]
+      resources :favorites, only: [:index]
+      resource :favorites, only: [:create, :destroy]
     end
   end
 end

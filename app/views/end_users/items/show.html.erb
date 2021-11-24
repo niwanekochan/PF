@@ -1,12 +1,7 @@
 <%= render 'end_users/items/sidebar', genres: @genres %>
 <h1>商品詳細</h1>
-<div>
-  製品画像：
-  <% if @item.favorited_by?(current_user) %>
-    <%= link_to 'お気に入りリスト追加済み', end_users_item_favorite_path(@item.id), method: :delete %>
-  <% else %>
-    <%= link_to 'お気に入りリストに追加', end_users_item_favorites_path(@item.id), method: :post %>
-  <% end %>
+<div id="favorite_bottons_<%= @item.id %>">
+  <%= render 'end_users/items/favorite', item: @item %>
 </div>
 <table>
   <tr>
