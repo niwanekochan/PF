@@ -1,23 +1,17 @@
 <div class="container">
   <div class="row">
-    <%= render 'end_users/items/sidebar', genres: @genres %>
-    <div class="col-lg-8 offset-lg-1">
-      <h3>登録製品一覧</h3>
-      <div class="text-lg-right m-3">
-        <%= link_to '新規追加', new_admins_item_path, class: "btn btn-dark text-light" %>
-      </div>
+    <div class="col-lg-9 offset-lg-1">
+      <h3>お気に入りリスト</h3>
       <table class="table">
         <thead>
           <tr>
             <th>製品画像</th>
             <th>製品名</th>
-            <th>製品価格帯</th>
+            <th></th>
           </tr>
         </thead>
-
-        <%# 登録されている製品を一覧表示 %>
+        <% current_user.favorite_items.each do |item| %>
         <tbody>
-          <% @items.each do |item| %>
           <tr>
             <td>
               <%= link_to admins_item_path(item.id) do %>
@@ -25,14 +19,14 @@
               <% end %>
             </td>
             <td>
-              <%= link_to admins_item_path(item.id) do %>
+              <%= link_to end_users_item_path(item.id) do %>
                 <%= item.name %>
               <% end %>
-            </td>
-            <td><%= item.price %>円～</td>
+              </td>
+            <td><%= render 'end_users/items/destroy_favorite', item: item %></td>
           </tr>
-          <% end %>
         </tbody>
+        <% end %>
       </table>
     </div>
   </div>

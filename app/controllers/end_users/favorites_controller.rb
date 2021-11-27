@@ -1,9 +1,4 @@
 class EndUsers::FavoritesController < ApplicationController
-  def index
-    user = current_user
-    @item = Item.find_by(item_id: @item.id)
-    @favorites = Favorite.where(user_id: user.id).all
-  end
 
   def create
     @item = Item.find(params[:item_id])

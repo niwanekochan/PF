@@ -1,1 +1,2 @@
 $('#favorite_bottons_<%= @item.id %>').html("<%= j(render "end_users/items/favorite", item: @item) %>");
+$('#destroy_favorite_<%= @item.id %>').html("<%= j(render "end_users/items/destroy_favorite", item: @item) %>");
