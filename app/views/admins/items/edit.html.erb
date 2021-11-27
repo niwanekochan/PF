@@ -1,26 +1,34 @@
-<h1>商品編集</h1>
-<%= form_with model: @item, url:admins_item_path, local:true do |f| %>
-<table>
-  <tr>
-    <th>商品画像</th>
-    <td><%= f.attachment_field :image %></td>
-  </tr>
-  <tr>
-    <th>商品名</th>
-    <td><%= f.text_field :name %></td>
-  </tr>
-  <tr>
-    <th>商品スペック</th>
-    <td><%= f.text_area :item_spec %></td>
-  </tr>
-  <tr>
-    <th>商品価格</th>
-    <td><%= f.number_field :price %></td>
-  </tr>
-  <tr>
-    <th>ジャンル</th>
-    <td></td>
-  </tr>
-  <%= f.submit '変更を保存' %>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 offset-lg-1">
+      <h1>商品編集</h1>
+      <div class="form-horizontal">
+        <%= form_with model: @item, url:admins_item_path, local:true do |f| %>
+        <table class="table table-borderless">
+          <tr class="form-group">
+            <th>商品画像</th>
+            <td><%= f.attachment_field :image %></td>
+          </tr>
+          <tr class="form-group">
+            <th>商品名</th>
+            <td><%= f.text_field :name, class: "form-control" %></td>
+          </tr>
+          <tr class="form-group">
+            <th>商品スペック</th>
+            <td><%= f.text_area :item_spec, class: "form-control", rows: "8" %></td>
+          </tr>
+          <tr class="form-group">
+            <th>商品価格</th>
+            <td><%= f.number_field :price, class: "form-control" %></td>
+          </tr>
+          <tr class="form-group">
+            <th>ジャンル</th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => '選択してください', class: "form-control" %></td>
+          </tr>
+        </table>
+        <%= f.submit '変更を保存', class: "btn btn-dark" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

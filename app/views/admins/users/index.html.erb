@@ -1,18 +1,29 @@
-<h1>会員一覧</h1>
-<table>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>会員氏名</th>
-      <th>会員メールアドレス</th>
-    </tr>
-  </thead>
-  <% @users.each do |user| %>
-  <tbody>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= user.lastname + @user.firstname %></td>
-      <td><%= user.email %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 offset-lg-1">
+      <h3>会員一覧</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>会員氏名</th>
+            <th>会員メールアドレス</th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= user.id %></td>
+            <td>
+              <%= link_to admins_user_path(user.id) do %>
+                <%= user.last_name + user.fitst_name %>
+              <% end %>
+            </td>
+            <td><%= user.email %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

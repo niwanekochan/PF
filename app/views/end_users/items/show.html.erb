@@ -1,39 +1,64 @@
-<%= render 'end_users/items/sidebar', genres: @genres %>
-<h1>商品詳細</h1>
-<div>
-  製品画像：
-  <% if @item.favorited_by?(current_user) %>
-    <%= link_to 'お気に入りリスト追加済み', end_users_item_favorite_path(@item.id), method: :delete %>
-  <% else %>
-    <%= link_to 'お気に入りリストに追加', end_users_item_favorites_path(@item.id), method: :post %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div>
+        <%= attachment_image_tag @item, :image, :fill, 200, 250, fallback: "no_image.jpg" %>
+      </div>
+      <div id="favorite_bottons_<%= @item.id %>">
+        <%= render 'end_users/items/favorite', item: @item %>
+      </div>
+    </div>
+    <div class="col-lg-8 offset-lg-1">
+      <h3>商品詳細</h3>
+      <table class="table">
+        <tr>
+          <td>製品名：<%= @item.name %></td>
+        </tr>
+        <tr>
+          <td>価格帯：<%= @item.price %>円～</td>
+        </tr>
+        <tr>
+          <td>製品スペック：<%= @item.item_spec %></td>
+        </tr>
+      </table>
+      <% @all_ranks.each.with_index(1) do |item, i| %>
+        第
+        = i
+        位
+        <%= item.name %>
+      <% end %>
+      <% @item.comments.each do |item_comment| %>
+      <table>
+        <tr>
+          <td><%= item_comment.user.last_name + item_comment.user.fitst_name %></td>
+        </tr>
+        <tr>
+          <td><%= item_comment.comment %></td>
+          <% if item_comment.user == current_user %>
+            <td><%= link_to '削除', end_users_item_comment_path(item_comment.item_id, item_comment.id), method: :delete, class: "btn btn-dark" %></td>
+          <% end %>
+        </tr>
+      </table>
+      <% end %>
+
+      <%= form_with(model:[@item, @item_comment], url:end_users_item_comments_path(@item.id), local: true) do |f| %>
+      <div class="form-group row" id="star">
+        <%= f.label :rate,'製品評価 ', class:'col-md-3 col-form-label' %>
+        <%= f.hidden_field :rate, id: :review_star %>
+      </div>
+      <script>
+        $('#star').raty({
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'item[rate]',
+          half: true,
+        });
+      </script>
+      <%= f.text_area :comment, class: "form-control", rows: "8" %>
+      <%= f.submit 'コメントする', class: "btn btn-dark" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<table>
-  <tr>
-    <td>製品名：<%= @item.name %></td>
-  </tr>
-  <tr>
-    <td>価格帯：<%= @item.price %></td>
-  </tr>
-  <tr>
-    <td>製品スペック：<%= @item.item_spec %></td>
-  </tr>
-</table>
-<% @all_ranks.each.with_index(1) do |item, i| %>
-  第
-  = i
-  位
-  <%= item.name %>
-<% end %>
-<% @item.comments.each do |item_comment| %>
-<table>
-  <tr>
-    <td><%#= item_comment.user.name %></td>
-    <td><%= item_comment.comment %></td>
-  </tr>
-</table>
-<% end %>
-<%= form_with(model:[@item, @item_comment], url:end_users_item_comments_path(@item.id), local: true) do |f| %>
-  <%= f.text_area :comment %>
-  <%= f.submit 'コメントする' %>
-<% end %>

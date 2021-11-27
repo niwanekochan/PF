@@ -1,10 +1,25 @@
-<h1>商品詳細</h1>
-<table>
-  <tr>
-    <td><%= @item.name %></td>
-    <td><%= @item.item_spec %></td>
-    <td><%= @item.price %></td>
-    <td><%= @item.genre.name %></td>
-  </tr>
-</table>
-<%= link_to '編集する', edit_admins_item_path(@item.id) %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= attachment_image_tag @item, :image, :fill, 250, 200, fallback: "no_image.jpg" %>
+    </div>
+    <div class="col-lg-8 offset-lg-1">
+      <h3>商品詳細</h3>
+      <table class="table table-borderless">
+        <tr>
+          <td>製品名：<%= @item.name %></td>
+        </tr>
+        <tr>
+          <td>製品スペック：<%= @item.item_spec %></td>
+        </tr>
+        <tr>
+          <td>価格帯：￥<%= @item.price %>円～</td>
+        </tr>
+        <tr>
+          <td>製品ジャンル：<%= @item.genre.name %></td>
+        </tr>
+      </table>
+      <%= link_to '編集する', edit_admins_item_path(@item.id), class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>

@@ -1,35 +1,57 @@
-    <header>
+<header class="shadow-sm bg-dark mb-lg-5">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
       <div>
-        <%= form_with url: end_users_search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword, value: keyword %>
-          <%= f.submit '検索' %>
-        <% end %>
+      <%= form_with url: end_users_search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: keyword %>
+        <%= f.submit '検索' %>
+      <% end %>
       </div>
+      <div>
+      <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
-        <li>
-          <%= link_to 'マイページ', end_users_user_path(current_user) %>
+        <li class="nav-item">
+          <%= link_to 'マイページ', end_users_user_path(current_user), class: 'nav-link text-light' %>
         </li>
-        <li>
-          <%= link_to '製品一覧', end_users_items_path %>
+        <li class="nav-item">
+          <%= link_to '製品一覧', end_users_items_path, class: 'nav-link text-light' %>
         </li>
-        <li>
-          <%#= link_to 'お気に入りリスト', end_users_item_favorites_path(item) %>
+        <li class="nav-item">
+          <%= link_to 'お気に入りリスト', favorite_index_end_users_items_path, class: 'nav-link text-light' %>
         </li>
-        <li>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <li class="nav-item">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
         </li>
-      <% else %>
-        <li>
-          <%= link_to '製品一覧', end_users_items_path %>
+      <%# elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to '製品一覧', admins_items_path, class: 'nav-link text-light' %>
         </li>
-        <li>
-          <%#= link_to 'お気に入りリスト', end_users_item_favorites_path(item) %>
+        <li class="nav-item">
+          <%= link_to '会員一覧', admins_users_path, class: 'nav-link text-light' %>
         </li>
-        <li>
-          <%= link_to '新規会員登録', new_user_registration_path %>
+        <li class="nav-item">
+          <%= link_to 'ジャンル一覧', admins_genres_path, class: 'nav-link text-light' %>
         </li>
-        <li>
-          <%= link_to 'ログイン', new_user_session_path %>
+        <li class="nav-item">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+        </li>
+      <% elsif %>
+        <li class="nav-item">
+          <%= link_to '製品一覧', end_users_items_path, class: 'nav-link text-light' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'お気に入りリスト', favorite_index_end_users_items_path, class: 'nav-link text-light' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '新規会員登録', new_user_registration_path, class: 'nav-link text-light' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-light' %>
         </li>
       <% end %>
-    </header>
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>

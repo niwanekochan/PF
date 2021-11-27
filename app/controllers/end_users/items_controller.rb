@@ -1,4 +1,9 @@
 class EndUsers::ItemsController < ApplicationController
+
+  def favorite_index
+
+  end
+
   def index
     @items = Item.all
     @genres = Genre.all
