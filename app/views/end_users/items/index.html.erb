@@ -2,7 +2,7 @@
   <div class="row">
     <%= render 'end_users/items/sidebar', genres: @genres %>
     <div class="col-lg-8 offset-1">
-      <h1>製品一覧</h1>
+      <h3>製品一覧</h3>
       <table class="table">
         <thead>
           <tr>
@@ -19,10 +19,18 @@
             <%= link_to end_users_item_path(item.id) do %>
               <%= item.name %>
             <% end %>
+            <div id="star-<%= item.id %>"></div>
+            <div>
+              ユーザー評価：
+              <%= link_to end_users_item_path(item.id) do %>
+                <%= item.comments.count %>
+              <% end %>
+              件
+            </div>
             </th>
             <td>
               <%= link_to end_users_item_path(item.id) do %>
-                <%= attachment_image_tag item, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
               <% end %>
             </td>
             <td><%= item.price %>円～</td>
@@ -31,6 +39,19 @@
         </tbody>
         <% end %>
     </table>
+    <script>
+      <% @items.each do |item| %>
+      $('#star-<%= item.id %>').raty({
+        size: 36,
+        starOff: '<%= asset_path('star-off.png') %>',
+        starOn: '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        score: <%= item.comments.average(:rate).to_f.round(1) %>,
+        half: true,
+      });
+      <% end %>
+    </script>
     </div>
   </div>
 </div>

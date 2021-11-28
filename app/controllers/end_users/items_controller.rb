@@ -1,7 +1,8 @@
 class EndUsers::ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:favorite_index, :show]
 
   def favorite_index
-
+    @favorite_items =  Item.where(id: current_user.favorites.pluck('item_id'))
   end
 
   def index
