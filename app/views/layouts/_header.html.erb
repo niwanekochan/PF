@@ -1,6 +1,9 @@
 <header class="shadow-sm bg-dark mb-lg-5">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
+      <div class="btn btn-warning text text-dark">
+        <%= link_to 'Maniac PC', root_path %>
+      </div>
       <div>
       <%= form_with url: end_users_search_path, method: :get, local: true do |f| %>
         <%= f.text_field :keyword, value: keyword %>
@@ -9,7 +12,7 @@
       </div>
       <div>
       <ul class="navbar-nav ml-auto">
-      <% if user_signed_in? %>
+      <% if user_signed_in? && !current_user.is_admin? %>
         <li class="nav-item">
           <%= link_to 'マイページ', end_users_user_path(current_user), class: 'nav-link text-light' %>
         </li>
@@ -22,7 +25,7 @@
         <li class="nav-item">
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
         </li>
-      <%# elsif admin_signed_in? %>
+      <% elsif user_signed_in? && current_user.is_admin? %>
         <li class="nav-item">
           <%= link_to '製品一覧', admins_items_path, class: 'nav-link text-light' %>
         </li>

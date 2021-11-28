@@ -2,32 +2,10 @@
   <div class="row">
     <div class="col-lg-9 offset-lg-1">
       <h3>お気に入りリスト</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>製品画像</th>
-            <th>製品名</th>
-            <th></th>
-          </tr>
-        </thead>
-        <% current_user.favorite_items.each do |item| %>
-        <tbody>
-          <tr>
-            <td>
-              <%= link_to admins_item_path(item.id) do %>
-                <%= attachment_image_tag item, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to end_users_item_path(item.id) do %>
-                <%= item.name %>
-              <% end %>
-              </td>
-            <td><%= render 'end_users/items/destroy_favorite', item: item %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
+      <div id="destroy_favorite">
+        <%#= render "end_users/items/destroy_favorite", { item: @item, favorites: @favorites } %>
+        <%= render partial: "end_users/items/destroy_favorite", :locals => { favorite_items: @favorite_items} %>
+      </div>
     </div>
   </div>
 </div>

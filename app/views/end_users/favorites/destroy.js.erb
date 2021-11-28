@@ -1,2 +1,6 @@
+$('#destroy_favorite').html("<%= j(render partial: "end_users/items/destroy_favorite", :locals => {favorite_items: @favorite_items}) %>");
 $('#favorite_bottons_<%= @item.id %>').html("<%= j(render "end_users/items/favorite", item: @item) %>");
-$('#destroy_favorite_<%= @item.id %>').html("<%= j(render "end_users/items/destroy_favorite", item: @item) %>");
+$("#destroy_favorite > table tbody tr:first-child").children().each( (index, element) => {
+      $(element).css('padding-top', '0');
+      $(element).css('border-top', 'none');
+ });
