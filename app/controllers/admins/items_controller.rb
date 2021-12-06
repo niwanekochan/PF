@@ -11,6 +11,10 @@ class Admins::ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     if item.save
+      tags = Vision.get_image_data(item.image)
+      tags.each do |tag|
+        item.tags.create(name: tag)
+      end
       redirect_to admins_item_path(item.id)
     else
       @item = Item.new

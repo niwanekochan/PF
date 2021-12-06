@@ -15,6 +15,8 @@ class EndUsers::ItemsController < ApplicationController
     @genres = Genre.all
     @item_comment = Comment.new
     @all_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+
+    tags = Vision.get_image_data(@item.image)
   end
 
   def search
