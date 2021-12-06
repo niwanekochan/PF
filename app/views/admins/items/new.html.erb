@@ -4,6 +4,7 @@
       <h3>商品新規追加</h3>
       <div class="form-horizontal">
         <%= form_with model: @item, url:admins_items_path, local:true do |f| %>
+        <%#= f.hidden_field :rate, :value => 0.0 %>
         <table class="table table-borderless">
           <tr class="form-group">
             <th>商品画像</th>
