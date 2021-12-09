@@ -9,7 +9,7 @@ class EndUsers::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if user.save(user_params)
+    if user.update(user_params)
       redirect_to end_users_user_path(user.id)
     else
       @user = User.find(params[:id])
@@ -19,7 +19,7 @@ class EndUsers::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:last_name, :last_name_kana, :first_name, :first_name_kana, :email, :password)
+    params.require(:user).permit(:last_name, :last_name_kana, :fitst_name, :first_name_kana, :email, :password)
   end
 
 end
