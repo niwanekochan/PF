@@ -13,6 +13,7 @@
 
 //= require jquery3
 //= require jquery
+//= require jquery_ujs
 //= require rails-ujs
 //= require jquery.raty
 //= require popper

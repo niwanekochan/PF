@@ -1,4 +1,7 @@
-$('.btn').on('click', function(){
-  $('.btn__menu').toggleClass('active');
-  $('.p-global-nav').toggleClass('active');
+$(function() {
+  $('.menu-trigger').on('click', function(){
+    $(this).toggleClass('active');
+    $('#sp-menu').fadeToggle();
+    event.preventDefault();
+  });
 });

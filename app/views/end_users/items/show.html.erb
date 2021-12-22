@@ -12,8 +12,8 @@
       </div>
     </div>
     <div class="col-lg-7 offset-lg-1">
-      <h3>商品詳細</h3>
-      <table class="table">
+
+      <table class="table text-light">
         <tr>
           <td>製品名：<%= @item.name %></td>
         </tr>
@@ -29,13 +29,13 @@
   <div class="row">
     <div class="col-lg-11">
 
-    <h4 class="mt-3 text-primary"><strong>ユーザーの声</strong></h4>
+    <h4 class="mt-3 text-light"><strong>ユーザーの声</strong></h4>
     <% @item.comments.each do |item_comment| %>
       <table class="table table border-bottom">
         <tr>
           <th>
-            <%= item_comment.user.last_name + item_comment.user.fitst_name %>
-            <div id="star-<%= item_comment.id %>">評価：</div>
+            <div class="text-light"><%= item_comment.user.last_name + item_comment.user.fitst_name %></div>
+            <div id="star-<%= item_comment.id %>" class="text-light">評価：</div>
           </th>
           <th></th>
         </tr>
@@ -48,9 +48,9 @@
       </table>
     <% end %>
 
-　　<h4 class="mt-3 text-primary"><strong>製品に対するコメントフォーム</strong></h4>
+　　<h4 class="mt-3 text-light"><strong>製品に対するコメントフォーム</strong></h4>
     <%= form_with(model:[@item, @item_comment], url:end_users_item_comments_path(@item.id), local: true) do |f| %>
-    <div class="form-group row" id="star">
+    <div class="form-group row text-light" id="star">
       <%= f.label :rate,'製品評価', class:'col-md-3 col-form-label' %>
       <%= f.hidden_field :rate, id: :review_star %>
     </div>
@@ -80,7 +80,7 @@
     <%= f.submit 'コメントする', class: "btn btn-dark" %>
     <% end %>
 
-    <h4 class="mt-3 text-primary"><strong>人気・おすすめ製品ランキング</strong></h4>
+    <h4 class="mt-3 text-light"><strong>人気・おすすめ製品ランキング</strong></h4>
     <% @all_ranks.each.with_index(1) do |item, i| %>
     <table class="table">
       <tr>
