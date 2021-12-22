@@ -6,18 +6,20 @@
       </div>
       <div>
       <%= form_with url: end_users_search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :keyword, value: keyword %>
+        <%= f.text_field :keyword, value: keyword, :placeholder => "製品検索はこちら" %>
         <%= f.submit '検索' %>
       <% end %>
       </div>
 
-      <div id="btn">
-        <button id="btn__menu" type="button">
-          <span class="btn__text">Menu</span>
-        </button>
+      <div id="hm-icon">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
       </div>
-      <div>
-        <ul class="navbar-nav ml-auto" id="p-global-nav">
+      <div id="sp-menu">
+        <ul class="navbar-nav ml-auto">
         <% if user_signed_in? && !current_user.is_admin? %>
           <li class="nav-item">
             <%= link_to 'マイページ', end_users_user_path(current_user), class: 'nav-link text-light' %>
@@ -61,6 +63,7 @@
         </ul>
       </div>
     </div>
+    <script src="layouts/jquery.btn.js"></script>
   </nav>
 
 </header>
