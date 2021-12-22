@@ -10,49 +10,55 @@
         <%= f.submit '検索' %>
       <% end %>
       </div>
+
+      <div id="btn">
+        <button id="btn__menu" type="button">
+          <span class="btn__text">Menu</span>
+        </button>
+      </div>
       <div>
-      <ul class="navbar-nav ml-auto">
-      <% if user_signed_in? && !current_user.is_admin? %>
-        <li class="nav-item">
-          <%= link_to 'マイページ', end_users_user_path(current_user), class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '製品一覧', end_users_items_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'お気に入りリスト', favorite_index_end_users_items_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
-        </li>
-      <% elsif user_signed_in? && current_user.is_admin? %>
-        <li class="nav-item">
-          <%= link_to '製品一覧', admins_items_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '会員一覧', admins_users_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'ジャンル一覧', admins_genres_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
-        </li>
-      <% elsif %>
-        <li class="nav-item">
-          <%= link_to '製品一覧', end_users_items_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'お気に入りリスト', favorite_index_end_users_items_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '新規会員登録', new_user_registration_path, class: 'nav-link text-light' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-light' %>
-        </li>
-      <% end %>
-      </ul>
+        <ul class="navbar-nav ml-auto" id="p-global-nav">
+        <% if user_signed_in? && !current_user.is_admin? %>
+          <li class="nav-item">
+            <%= link_to 'マイページ', end_users_user_path(current_user), class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '製品一覧', end_users_items_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'お気に入りリスト', favorite_index_end_users_items_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <% elsif user_signed_in? && current_user.is_admin? %>
+          <li class="nav-item">
+            <%= link_to '製品一覧', admins_items_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '会員一覧', admins_users_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ジャンル一覧', admins_genres_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <% elsif %>
+          <li class="nav-item">
+            <%= link_to '製品一覧', end_users_items_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'お気に入りリスト', favorite_index_end_users_items_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '新規会員登録', new_user_registration_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-light' %>
+          </li>
+        <% end %>
+        </ul>
       </div>
     </div>
   </nav>
