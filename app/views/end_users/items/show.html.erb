@@ -65,6 +65,7 @@
       });
 
       <% @item.comments.each do |item_comment| %>
+      $('#star-<%= item_comment.id %>').empty();
       $('#star-<%= item_comment.id %>').raty({
         size: 36,
         starOff: '<%= asset_path('star-off.png') %>',
