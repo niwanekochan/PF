@@ -41,6 +41,7 @@
     </table>
     <script>
       <% @items.each do |item| %>
+      $('#star-<%= item.id %>').empty();
       $('#star-<%= item.id %>').raty({
         size: 36,
         starOff: '<%= asset_path('star-off.png') %>',
